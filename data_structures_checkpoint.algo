@@ -4,10 +4,8 @@ VAR
     tab1 : ARRAY_OF INTEGER[4];
     tab2 : ARRAY_OF INTEGER[5];
     // declaring 2 hashing tables
-    htab1 : HASH_TABLE<INTEGER,STRING>;
-    htab2 : HASH_TABLE<INTEGER,STRING>;
-    str1 : STRING[5]
-    str2 : STRING[4]
+    htab1 : HASH_TABLE<INTEGER,INTEGER>;
+    htab2 : HASH_TABLE<INTEGER,INTEGER>;
     // declaring the variables of counts
     sum :INTEGER:= 0
     count :INTEGER:= 0
@@ -31,25 +29,11 @@ BEGIN
         write(sum)
     END_FOR
     END_FOR
-
     // second method of finding the sum of distinct elements
-
-    // filling in the htables
-    htab1.insert(0,"20");
-    htab1.insert(1,"4");
-    htab1.insert(2,"8");
-    htab1.insert(3,"10");
-    Write(htab1);
-    htab2.insert(0,"2");
-    htab2.insert(1,"5");
-    htab2.insert(2,"7");
-    htab2.insert(3,"8");
-    Write(htab2);
-    
-    FOR i FROM 0 TO str1.length -1 STEP 1  DO
-    FOR j FROM 0 TO str2.length -1 STEP 1  DO
-        IF (htab1.lookup(str1[i]) <> htab2.lookup(str2[j])) THEN
-            count := htab1.get(int(str1[i]))+htab2.get(int(str2[j]));
+    FOR i FROM 0 TO tab1.length -1 STEP 1  DO
+    FOR j FROM 0 TO tab2.length -1 STEP 1  DO
+        IF (htab1.lookup(tab1[i]) <> htab2.lookup(tab2[j])) THEN
+            count := htab1.get(tab1[i])+htab2.get(tab2[j]);
         ELSE
             BREAK;
         END_IF
